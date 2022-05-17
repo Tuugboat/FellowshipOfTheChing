@@ -3,7 +3,7 @@
 ![Off To See the Wizard](Images/OffWeGo.jpg)
 
 This week, we made *very* solid progress for the first week afoot. We
-covered 32.85 as a group, which leaves us just shy of Hobbits second
+covered 33.85 as a group, which leaves us just shy of Hobbits second
 day, in which they make 46 miles. At this point, we are unwittingly
 running towards a chance encounter with a Nazgul and an elf party!
 
@@ -84,7 +84,7 @@ Katie
 Noah
 </td>
 <td style="text-align:right;">
-2.00
+3.00
 </td>
 </tr>
 <tr>
