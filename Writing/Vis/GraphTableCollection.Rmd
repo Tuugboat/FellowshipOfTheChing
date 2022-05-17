@@ -1,0 +1,45 @@
+---
+title: "GraphTableCollection"
+author: "Robert Petit"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../Code/include.R", local=TRUE)
+WorkoutData = read_csv(here("Data/Workouts.csv"))
+
+CURRENTWEEK = 1
+```
+
+
+``` {r BuildStats}
+# Generates all of the stats
+MilesCovered_Total <- WorkoutData %>% summarize(Covered = sum(FrodoMiles)) %>% pull(Covered)
+MilesCovered_Weekly <- WorkoutData %>% filter(Week == CURRENTWEEK) %>% summarize(Covered = sum(FrodoMiles)) %>% pull(Covered)
+
+WD_Stats_Total <- WorkoutData %>% Stats_PerPerson()
+WD_Stats_Weekly <- WorkoutData %>% filter(Week == CURRENTWEEK) %>% Stats_PerPerson()
+
+WeeklyFrodo <- WD_Stats_Weekly %>% arrange(desc(TotalDistance)) %>% head(1)
+WeeklySam <- WD_Stats_Weekly %>% filter(Name != WeeklyFrodo$Name) %>% arrange(desc(TotalTime)) %>% head(1)
+```
+
+# Leaderboards
+```{r FMLeader}
+WD_Stats_Total %>%
+  select(Name, TotalDistance) %>%
+  arrange(desc(TotalDistance)) %>%
+  kable(col.names = c("Names", "Frodo Miles"),
+        caption = "Total Frodo Miles")
+```
+
+```{r FMWeeklyLeader}
+WD_Stats_Weekly %>%
+  select(Name, TotalDistance) %>%
+  arrange(desc(TotalDistance)) %>%
+  kable(col.names = c("Names", "Frodo Miles"),
+        caption = "Weekly Frodo Miles")
+```
+
+
