@@ -29,7 +29,7 @@ WeeklySam <- WD_Stats_Weekly %>% arrange(desc(TotalTime)) %>% head(1)
 # We're Off!
 ![Off To See the Wizard](Images/OffWeGo.jpg)
 
-This week, we made *very* solid progress for the first week afoot. We covered `r MilesCovered_Weekly` as a group, which leaves us just shy of Hobbits second day, in which they make 46 miles. At this point, we are unwittingly running towards a chance encounter with a Nazgul and an elf party!
+This week, we made *very* solid progress for the first week afoot. We covered `r MilesCovered_Weekly` Frodo Miles as a group, which leaves us just shy of Hobbits second day, in which they make 46 miles. At this point, we are unwittingly running towards a chance encounter with a Nazgul and an elf party!
 
 # Frodo and Sam
 ![Chart Toppers](Images/FrodoAndSam.jpg)
