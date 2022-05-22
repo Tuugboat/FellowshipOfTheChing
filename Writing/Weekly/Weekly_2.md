@@ -4,7 +4,7 @@
 
 We hit 63.44 Frodo Miles this week! We got out of the shire, survived an
 unfortunate encounter with some Nazgul, and are now back on the road to
-Bree. We are just shy of the next scene at 73 miles, if we can make
+Bree. We are just shy of the next scene at 73 miles. If we can make
 small gains in the next week, we may even hit Tom Bombaldi by Saturday!
 
 # If We Took One More Step…
@@ -15,13 +15,15 @@ helpful for my joke if someone could figure out how to take a step that
 was 4.26 miles long, because we did actually run slightly less this week
 as a group. Thankfully, this is actually over-explained by the people
 who posted no runs this (very busy) week, so we actually had a net
-*increase* among the smaller group! Particular shout-out to Noah for
-taking over as ring-bearer, managed to grab the Frodo title with a
-whopping 12.3 miles. In addition to running the furthest, he also posted
-a new group-wide record for a one mile at 7:18 AND for 5k at 27:19.
+*increase* among the smaller group!
 
-I brought up the time-investment of the Gamgee after running for 119
-minutes.
+Particular shout-out to Noah for taking over as ring-bearer. He managed
+to grab the Frodo title with a whopping 12.3 miles. In addition to
+running the furthest, he also posted a new group-wide record for a one
+mile at 7:18 AND for 5k at 27:19.
+
+I managed to keep up the time-investment of the Gamgee after running for
+119 minutes.
 
 Our fun graph of the week is the miles covered by day for the group.
 Turns out, we are accidentally coordinating with our rest days, as
