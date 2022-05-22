@@ -9,25 +9,26 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../Code/include.R", local=TRUE)
 WorkoutData = read_csv(here("Data/Workouts.csv"))
 
-CURRENTWEEK = 1
+CURRENTWEEK = 2
 ```
 
 
 ``` {r BuildStats}
 # Generates all of the stats
+
 MilesCovered_Total <- WorkoutData %>% summarize(Covered = sum(FrodoMiles)) %>% pull(Covered)
 MilesCovered_Weekly <- WorkoutData %>% filter(Week == CURRENTWEEK) %>% summarize(Covered = sum(FrodoMiles)) %>% pull(Covered)
+MilesCovered_LastWeek <- WorkoutData %>% filter(Week == CURRENTWEEK-1) %>% summarize(Covered = sum(FrodoMiles)) %>% pull(Covered)
 
-WD_Stats_Total <- WorkoutData %>% Stats_PerPerson()
-WD_Stats_Weekly <- WorkoutData %>% filter(Week == CURRENTWEEK) %>% Stats_PerPerson()
+WD_Stats <- WorkoutData %>% Stats_PerPerson(CURRENTWEEK)
 
-WeeklyFrodo <- WD_Stats_Weekly %>% arrange(desc(TotalDistance)) %>% head(1)
-WeeklySam <- WD_Stats_Weekly %>% filter(Name != WeeklyFrodo$Name) %>% arrange(desc(TotalTime)) %>% head(1)
+WeeklyFrodo <- WD_Stats %>% arrange(desc(WeeklyDistance)) %>% head(1)
+WeeklySam <- WD_Stats %>% arrange(desc(WeeklyTime)) %>% head(1)
 ```
 
 # Leaderboards
 ```{r FMLeader}
-WD_Stats_Total %>%
+WD_Stats %>%
   select(Name, TotalDistance) %>%
   arrange(desc(TotalDistance)) %>%
   kable(col.names = c("Names", "Frodo Miles"),
@@ -35,11 +36,28 @@ WD_Stats_Total %>%
 ```
 
 ```{r FMWeeklyLeader}
-WD_Stats_Weekly %>%
-  select(Name, TotalDistance) %>%
-  arrange(desc(TotalDistance)) %>%
+WD_Stats %>%
+  select(Name, WeeklyDistance) %>%
+  filter(WeeklyDistance>0) %>%
+  arrange(desc(WeeklyDistance)) %>%
   kable(col.names = c("Names", "Frodo Miles"),
         caption = "Weekly Frodo Miles")
 ```
 
-
+```{r MilesByDay_Weekly}
+WorkoutData %>%
+  filter(Week==CURRENTWEEK) %>%
+  group_by(Day) %>%
+  summarize(DayFM = sum(FrodoMiles)) %>%
+  ggplot(mapping=aes(
+    x = factor(Day, levels=c("Su", "M", "Tu", "W", "Th", "F", "Sa")),
+    y = DayFM,
+    fill=Day)) +
+  geom_col() +
+  scale_fill_brewer(type="qual", palette=6) +
+  labs(
+    title = "Group Miles By Day, This Week",
+    x="Day",
+    y="Frodo Miles"
+  )
+```

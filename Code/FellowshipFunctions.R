@@ -18,9 +18,26 @@ FrodoConversion <- function(Distance, Time, Workout) {
   }
 }
 
-Stats_PerPerson <- function(WorkoutTable) {
+Stats_PerPerson <- function(WorkoutTable, ThisWeek) {
+  # This was re factored after Week 2, Vis is up to date, W1 writeup is not
+  
   WorkoutTable %>%
+    
+    # But we make two new columns for distance and time, one that is non-0 if the workout occurred this week
+    # And a single lagged week. Later, we can summarize the current/lag by just summing those columns
+    # Probably a haphazard way to do this (there is clever summarize syntax I am certain)
+    mutate(WeeklyMiles = ifelse(Week==ThisWeek, FrodoMiles, 0),
+           LaggedWeeklyMiles = ifelse(Week==ThisWeek-1, FrodoMiles, 0),
+           
+           WeeklyTime = ifelse(Week==ThisWeek, Time, 0),
+           LaggedWeeklyTime = ifelse(Week==ThisWeek-1, Time, 0)) %>%
     group_by(Name) %>%
+    
     summarize(TotalDistance = sum(FrodoMiles),
-              TotalTime = sum(Time))
+              WeeklyDistance = sum(WeeklyMiles),
+              LagWeeklyDistance = sum(LaggedWeeklyMiles), #See above mutate()
+              
+              TotalTime = sum(Time),
+              WeeklyTime = sum(WeeklyTime),
+              LaggedWeeklyTime = sum(LaggedWeeklyTime))
 }
