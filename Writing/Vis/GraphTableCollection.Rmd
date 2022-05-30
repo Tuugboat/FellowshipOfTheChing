@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../Code/include.R", local=TRUE)
 WorkoutData = read_csv(here("Data/Workouts.csv"))
 
-CURRENTWEEK = 2
+CURRENTWEEK = 3
 ```
 
 
@@ -23,8 +23,11 @@ MilesCovered_LastWeek <- WorkoutData %>% filter(Week == CURRENTWEEK-1) %>% summa
 WD_Stats <- WorkoutData %>% Stats_PerPerson(CURRENTWEEK)
 
 WeeklyFrodo <- WD_Stats %>% arrange(desc(WeeklyDistance)) %>% head(1)
-WeeklySam <- WD_Stats %>% arrange(desc(WeeklyTime)) %>% head(1)
+WeeklySam <- WD_Stats %>% filter(Name != WeeklyFrodo$Name) %>% arrange(desc(WeeklyTime)) %>% head(1)
 ```
+
+# Critical Stats
+Total miles so far is `r MilesCovered_Total`. Total miles this week is `r MilesCovered_Weekly`. This week's Frodo is `r WeeklyFrodo$Name` with `r WeeklyFrodo$WeeklyDistance` FrodoMiles. This week's Sam is `r WeeklySam$Name` with `r WeeklySam$WeeklyTime / 60` minutes moving.
 
 # Leaderboards
 ```{r FMLeader}
@@ -44,13 +47,15 @@ WD_Stats %>%
         caption = "Weekly Frodo Miles")
 ```
 
+# Graphs
+
 ```{r MilesByDay_Weekly}
 WorkoutData %>%
   filter(Week==CURRENTWEEK) %>%
   group_by(Day) %>%
   summarize(DayFM = sum(FrodoMiles)) %>%
   ggplot(mapping=aes(
-    x = factor(Day, levels=c("Su", "M", "Tu", "W", "Th", "F", "Sa")),
+    x = factor(Day, levels=c("Su", "M", "Tu", "W", "Tr", "F", "Sa")),
     y = DayFM,
     fill=Day)) +
   geom_col() +
@@ -60,4 +65,21 @@ WorkoutData %>%
     x="Day",
     y="Frodo Miles"
   )
+```
+
+```{r PerPersonChange} 
+WD_Stats %>%
+  # We add 0.01 to ensure that people with no change are visible
+  mutate(NetChange = (WeeklyDistance - LagWeeklyDistance)+0.01) %>%
+  ggplot(mapping = aes(
+    x=reorder(Name, NetChange), 
+    y=NetChange,
+    fill=reorder(Name, NetChange))) +
+  geom_col() +
+  scale_fill_brewer(type='qual', palette=6) +
+  theme(legend.position="none") +
+  labs(title = "Weekly Change in FrodoMiles",
+       x="Name",
+       y="Change Since Last Week")
+
 ```
