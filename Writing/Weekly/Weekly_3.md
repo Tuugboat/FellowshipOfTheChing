@@ -11,11 +11,12 @@ some wonderful insights as to who earned these bonus miles:
 
 ![](Weekly_3_files/figure-markdown_strict/PerPersonChange-1.png)
 
-We had only two consequential reductions, both of them injured. Everyone
-ran pretty much the same, or more than they did the previous week. The
-biggest gain on this front was our dear Alexander, but in a week in
-which we met our mark by less than a mile, every single bit counts so
-massive pats on the back all around.
+We had only two consequential reductions, both of them injured. Katy
+reported a very small difference but this probably had more to do with
+reporting than the actual running. Everyone else ran more than they did
+previously! The biggest gain on this front was our dear Alexander, but
+in a week in which we met our mark by less than a mile, every single bit
+counts so massive pats on the back all around.
 
 # Hurrahs and Huzzahs
 
