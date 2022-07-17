@@ -1,6 +1,6 @@
 # The ‘Back Again’ Part
 
-(Data Boy is Back!)\[Images/ReturnOfTheData.png\]
+![Data Boy is Back!](Images/ReturnOfTheData.png)
 
 So, now that I am officially done moving I would like to thank everyone
 for continuing to post their runs as they are doing them. It was a long

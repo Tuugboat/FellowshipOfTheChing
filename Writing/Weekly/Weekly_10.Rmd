@@ -28,7 +28,7 @@ WeeklySam <- WD_Stats  %>% filter(Name != WeeklyFrodo$Name) %>% arrange(desc(Wee
 
 # The 'Back Again' Part
 
-(Data Boy is Back!)[Images/ReturnOfTheData.png]
+![Data Boy is Back!](Images/ReturnOfTheData.png)
 
 So, now that I am officially done moving I would like to thank everyone for continuing to post their runs as they are doing them. It was a long journey, but I am now in California and settled, with plans to return to running tomorrow. The break was longer than intended, but there's some new hills for me and Rachel to run, which is nice.
 
