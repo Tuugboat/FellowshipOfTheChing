@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../Code/include.R", local=TRUE)
 WorkoutData = read_csv(here("Data/Workouts.csv"))
 
-CURRENTWEEK = 3
+CURRENTWEEK = 10
 ```
 
 
